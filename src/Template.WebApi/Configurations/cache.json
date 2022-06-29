@@ -1,0 +1,9 @@
+{
+  "CacheSettings": {
+    "Enabled":  false,
+    "PreferRedis": false,
+    "RedisURL": "localhost:6379",
+    "AbsoluteExpirationInSeconds": 300,
+    "SlidingExpirationInSeconds": 120
+  }
+}

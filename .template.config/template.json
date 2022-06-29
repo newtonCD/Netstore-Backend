@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Newton Dantas",
+  "classifications": [
+    "Web",
+    "ASP.NET",
+    "Clean Architecture"
+  ],
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "identity": "Template.WebApi",
+  "name": ".NET Clean Architecture Solution",
+  "shortName": "template-clean-arch",
+  "sourceName": "Template.Clean.Architecture",
+  "preferNameDirectory": true
+}

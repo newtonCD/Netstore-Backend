@@ -1,0 +1,22 @@
+{
+  "IpRateLimitSettings": {
+    "EnableEndpointRateLimiting": false,
+    "StackBlockedRequests": false,
+    "RealIPHeader": "X-Real-IP",
+    "ClientIdHeader": "X-ClientId",
+    "HttpStatusCode": 429,
+    "IpWhitelist": [ "127.0.0.1", "::1/10", "192.168.0.0/24" ],
+    "EndpointWhitelist": [ "get:/api/v1/license", "*:/api/v1/status" ],
+    "ClientWhitelist": [ "dev-id-1", "dev-id-2" ],
+    "GeneralRules": [
+      {
+        "Endpoint": "*:/api/v1/*",
+        "Period": "1m",
+        "Limit": 5
+      }
+    ]
+  },
+  "IpRateLimitPolicies": {
+    "IpRules": []
+  }
+}

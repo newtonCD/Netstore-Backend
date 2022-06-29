@@ -1,0 +1,39 @@
+{
+  "Serilog": {
+    "Properties": {
+      "Application": "Template.WebApi"
+    },
+    "Using": [ "Serilog.Exceptions", "Serilog.Formatting.Compact" ],
+    "Enrich": [
+      "FromLogContext",
+      "WithMachineName",
+      "WithProcessId",
+      "WithThreadId",
+      "WithCorrelationIdHeader",
+      "WithExceptionDetails"
+    ],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Error",
+        "Microsoft.AspNetCore": "Warning",
+        "Microsoft.Hosting.Lifetime": "Information",
+        "System": "Information"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "outputTemplate": "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff}] [{Level:u3}] {Message:lj} {NewLine}{Exception} {Properties:j}{NewLine}"
+        }
+      },
+      {
+        "Name": "Seq",
+        "Args": {
+          "serverUrl": "http://localhost:5341"
+        }
+      }
+    ]
+  }
+}

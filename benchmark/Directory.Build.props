@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+        <SonarQubeExclude>true</SonarQubeExclude>
+        <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+        <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    </PropertyGroup>
+</Project>
