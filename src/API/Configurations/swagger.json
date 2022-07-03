@@ -1,0 +1,11 @@
+{
+  "SwaggerSettings": {
+    "Enable": true,
+    "Title": "Netstore API",
+    "Description": "API da loja virtual Netstore",
+    "DeprecatedMessage": " Esta versão da API foi descontinuada.",
+    "ContactName": "Newton Dantas",
+    "ContactEmail": "newton.dantas@gmail.com",
+    "ContactUrl": "https://www.linkedin.com/in/newtondantas/"
+  }
+}
