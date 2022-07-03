@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Netstore.Application.Interfaces.Services;
+using Netstore.Application.Settings;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
@@ -13,11 +15,16 @@ public class CacheService : ICacheService
 {
     private readonly ILogger<CacheService> _logger;
     private readonly IDistributedCache _cache;
+    private readonly IConfiguration _configuration;
 
-    public CacheService(IDistributedCache cache, ILogger<CacheService> logger)
+    public CacheService(
+        IDistributedCache cache,
+        ILogger<CacheService> logger,
+        IConfiguration configuration)
     {
         _cache = cache;
         _logger = logger;
+        _configuration = configuration;
     }
 
     public byte[] Get(string key)
@@ -61,9 +68,7 @@ public class CacheService : ICacheService
         try
         {
             await _cache.RefreshAsync(key, token);
-#pragma warning disable CA2254 // Template should be a static expression
-            _logger.LogDebug($"Cache Refreshed : {key}");
-#pragma warning restore CA2254 // Template should be a static expression
+            _logger.LogDebug("Cache Refreshed : {key}", key);
         }
         catch
         {
@@ -99,10 +104,11 @@ public class CacheService : ICacheService
     {
         try
         {
+            options.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(_configuration.GetSection(nameof(CacheSettings)).Get<CacheSettings>().AbsoluteExpirationInSeconds);
+            options.SlidingExpiration = TimeSpan.FromSeconds(_configuration.GetSection(nameof(CacheSettings)).Get<CacheSettings>().SlidingExpirationInSeconds);
+
             _cache.Set(key, value, options);
-#pragma warning disable CA2254 // Template should be a static expression
-            _logger.LogDebug($"Added to Cache : {key}");
-#pragma warning restore CA2254 // Template should be a static expression
+            _logger.LogDebug("Added to Cache : {key}", key);
         }
         catch
         {
@@ -114,10 +120,11 @@ public class CacheService : ICacheService
     {
         try
         {
+            options.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(_configuration.GetSection(nameof(CacheSettings)).Get<CacheSettings>().AbsoluteExpirationInSeconds);
+            options.SlidingExpiration = TimeSpan.FromSeconds(_configuration.GetSection(nameof(CacheSettings)).Get<CacheSettings>().SlidingExpirationInSeconds);
+
             await _cache.SetAsync(key, value, options, token);
-#pragma warning disable CA2254 // Template should be a static expression
-            _logger.LogDebug($"Added to Cache : {key}");
-#pragma warning restore CA2254 // Template should be a static expression
+            _logger.LogDebug("Added to Cache : {key}", key);
         }
         catch
         {
