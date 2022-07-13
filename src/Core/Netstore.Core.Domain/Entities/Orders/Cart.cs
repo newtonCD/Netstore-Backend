@@ -1,8 +1,8 @@
-﻿using Netstore.Domain.Entities.Base;
-using Netstore.Domain.Entities.Customers;
+﻿using Netstore.Core.Domain.Entities.Base;
+using Netstore.Core.Domain.Entities.Customers;
 using System;
 
-namespace Netstore.Domain.Entities.Orders;
+namespace Netstore.Core.Domain.Entities.Orders;
 
 public class Cart : Entity
 {

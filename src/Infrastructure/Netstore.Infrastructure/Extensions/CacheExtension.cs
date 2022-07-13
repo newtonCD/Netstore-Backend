@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Netstore.Application.Interfaces.Services;
-using Netstore.Application.Settings;
+using Netstore.Core.Application.Interfaces.Services;
+using Netstore.Core.Application.Settings;
 using Netstore.Infrastructure.Services;
 using StackExchange.Redis;
 using System;

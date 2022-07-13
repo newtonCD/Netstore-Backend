@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace Netstore.Application.Exceptions;
+namespace Netstore.Core.Application.Exceptions;
 
 [ExcludeFromCodeCoverage]
 [Serializable]
@@ -25,8 +25,8 @@ public class ValidationException : Exception
             .ToDictionary(failureGroup => failureGroup.Key, failureGroup => failureGroup.ToArray());
     }
 
-    protected ValidationException(SerializationInfo serializationInfo, StreamingContext streamingContext)
-        : base(serializationInfo, streamingContext)
+    protected ValidationException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
     {
         Errors = new Dictionary<string, string[]>();
     }

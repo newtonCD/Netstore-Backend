@@ -7,6 +7,7 @@ using System.Linq;
 using Netstore.API.Controllers;
 using Netstore.API.Model;
 using Netstore.API.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Netstore.API.Controllers.V2;
 
@@ -23,6 +24,7 @@ public class WeatherForecastController : ApiControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public IActionResult Get()
     {
         WeatherForecast weatherForecast;

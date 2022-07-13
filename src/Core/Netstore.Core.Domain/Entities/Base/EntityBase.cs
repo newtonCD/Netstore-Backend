@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Netstore.Domain.Entities.Base;
+namespace Netstore.Core.Domain.Entities.Base;
 
 public abstract class EntityBase
 {

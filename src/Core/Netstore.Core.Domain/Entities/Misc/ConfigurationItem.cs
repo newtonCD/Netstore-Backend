@@ -1,6 +1,6 @@
-﻿using Netstore.Domain.Entities.Base;
+﻿using Netstore.Core.Domain.Entities.Base;
 
-namespace Netstore.Domain.Entities.Misc;
+namespace Netstore.Core.Domain.Entities.Misc;
 public class ConfigurationItem : Entity
 {
     public int Id { get; set; }

@@ -1,6 +1,6 @@
-﻿using Netstore.Domain.Entities.Base;
+﻿using Netstore.Core.Domain.Entities.Base;
 
-namespace Netstore.Domain.Entities.Products;
+namespace Netstore.Core.Domain.Entities.Products;
 
 public class Product : Entity
 {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Netstore.Application.Interfaces.Services;
-using Netstore.Application.Settings;
+using Netstore.Core.Application.Interfaces.Services;
+using Netstore.Core.Application.Settings;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Netstore.Application.Interfaces.Services;
+using Netstore.Core.Application.Interfaces.Services;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;

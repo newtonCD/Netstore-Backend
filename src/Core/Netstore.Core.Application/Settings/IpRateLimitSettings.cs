@@ -1,7 +1,7 @@
-﻿using Netstore.Application.Interfaces;
+﻿using Netstore.Core.Application.Interfaces;
 using System.Collections.Generic;
 
-namespace Netstore.Application.Settings;
+namespace Netstore.Core.Application.Settings;
 
 public class IpRateLimitSettings : IAppSettings
 {
@@ -13,4 +13,5 @@ public class IpRateLimitSettings : IAppSettings
     public List<string> IpWhitelist { get; set; }
     public List<string> EndpointWhitelist { get; set; }
     public List<string> ClientWhitelist { get; set; }
+    public bool IsAppInLoadBalance { get; set; }
 }

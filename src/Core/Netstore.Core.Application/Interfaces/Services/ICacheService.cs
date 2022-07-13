@@ -2,7 +2,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Netstore.Application.Interfaces.Services;
+namespace Netstore.Core.Application.Interfaces.Services;
 
 public interface ICacheService
 {

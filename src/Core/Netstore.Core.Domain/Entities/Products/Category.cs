@@ -1,7 +1,7 @@
-﻿using Netstore.Domain.Entities.Base;
+﻿using Netstore.Core.Domain.Entities.Base;
 using System.Collections.Generic;
 
-namespace Netstore.Domain.Entities.Products;
+namespace Netstore.Core.Domain.Entities.Products;
 
 public class Category : Entity
 {

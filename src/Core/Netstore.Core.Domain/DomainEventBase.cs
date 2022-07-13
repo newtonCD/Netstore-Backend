@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Netstore.Domain;
+namespace Netstore.Core.Domain;
 
 [ExcludeFromCodeCoverage]
 public abstract class DomainEventBase : INotification
