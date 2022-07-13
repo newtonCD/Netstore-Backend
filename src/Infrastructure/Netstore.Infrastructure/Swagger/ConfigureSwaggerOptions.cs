@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using Netstore.Application.Settings;
+using Netstore.Core.Application.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -33,12 +33,20 @@ public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
 
         options.CustomSchemaIds(type => type.ToString());
 
-        string xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+        string xmlFilename = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
+
+        try
+        {
+            options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+        }
+        catch
+        {
+            // ignore
+        }
     }
 
     private OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
-{
+    {
         SwaggerSettings swaggerSettings = _configuration.GetSection(nameof(SwaggerSettings)).Get<SwaggerSettings>();
 
         var info = new OpenApiInfo()

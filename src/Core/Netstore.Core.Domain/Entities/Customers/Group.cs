@@ -1,7 +1,7 @@
-﻿using Netstore.Domain.Entities.Base;
+﻿using Netstore.Core.Domain.Entities.Base;
 using System.Collections.Generic;
 
-namespace Netstore.Domain.Entities.Customers;
+namespace Netstore.Core.Domain.Entities.Customers;
 
 public class Group : Entity
 {

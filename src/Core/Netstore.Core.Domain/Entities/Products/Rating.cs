@@ -1,7 +1,7 @@
-﻿using Netstore.Domain.Entities.Base;
-using Netstore.Domain.Entities.Customers;
+﻿using Netstore.Core.Domain.Entities.Base;
+using Netstore.Core.Domain.Entities.Customers;
 
-namespace Netstore.Domain.Entities.Products;
+namespace Netstore.Core.Domain.Entities.Products;
 
 public class Rating : Entity
 {

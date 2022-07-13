@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Netstore.Domain.Entities.Base;
+namespace Netstore.Core.Domain.Entities.Base;
 
 public abstract class Entity : EntityBase
 {

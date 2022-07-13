@@ -1,6 +1,6 @@
-﻿using Netstore.Domain.Entities.Base;
+﻿using Netstore.Core.Domain.Entities.Base;
 
-namespace Netstore.Domain.Entities.Shipping;
+namespace Netstore.Core.Domain.Entities.Shipping;
 
 public class WeightRange : Entity
 {

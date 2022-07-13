@@ -3,14 +3,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.Serialization;
 
-namespace Netstore.Application.Exceptions;
+namespace Netstore.Core.Application.Exceptions;
 
 [ExcludeFromCodeCoverage]
 [Serializable]
 public class NotFoundException : Exception
 {
     public NotFoundException()
-        : base()
     {
     }
 
@@ -19,8 +18,8 @@ public class NotFoundException : Exception
     {
     }
 
-    public NotFoundException(string message, Exception innerException)
-        : base(message, innerException)
+    public NotFoundException(string message, Exception inner)
+        : base(message, inner)
     {
     }
 
@@ -34,8 +33,8 @@ public class NotFoundException : Exception
     {
     }
 
-    protected NotFoundException(SerializationInfo serializationInfo, StreamingContext streamingContext)
-        : base(serializationInfo, streamingContext)
+    protected NotFoundException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
     {
     }
 }

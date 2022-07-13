@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Netstore.Application.Models;
+namespace Netstore.Core.Application.Models;
 
 [ExcludeFromCodeCoverage]
 public class PaginatedList<T>

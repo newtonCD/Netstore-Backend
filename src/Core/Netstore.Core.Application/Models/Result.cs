@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Netstore.Application.Models;
+namespace Netstore.Core.Application.Models;
 
 [ExcludeFromCodeCoverage]
 public class Result

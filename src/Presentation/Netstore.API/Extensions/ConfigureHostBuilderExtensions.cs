@@ -2,9 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Netstore.API.Extensions;
 
+[ExcludeFromCodeCoverage]
 public static class ConfigureHostBuilderExtensions
 {
     public static ConfigureHostBuilder Configure(this ConfigureHostBuilder host)
@@ -37,9 +39,14 @@ public static class ConfigureHostBuilderExtensions
                 .AddJsonFile($"{configurationsDirectory}/ipratelimit.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"{configurationsDirectory}/security.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"{configurationsDirectory}/serilog.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"{configurationsDirectory}/swagger.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"{configurationsDirectory}/swagger.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 
-                .AddEnvironmentVariables();
+            if (env.IsDevelopment())
+            {
+                config.AddUserSecrets(typeof(Program).Assembly, optional: true);
+            }
+
+            config.AddEnvironmentVariables();
         });
 
         return host;

@@ -1,6 +1,6 @@
-using Netstore.Application.Interfaces;
+using Netstore.Core.Application.Interfaces;
 
-namespace Netstore.Application.Settings;
+namespace Netstore.Core.Application.Settings;
 
 public class DatabaseSettings : IAppSettings
 {

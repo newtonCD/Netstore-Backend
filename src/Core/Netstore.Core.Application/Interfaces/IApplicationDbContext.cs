@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Netstore.Application.Interfaces;
+namespace Netstore.Core.Application.Interfaces;
 
 public interface IApplicationDbContext
 {

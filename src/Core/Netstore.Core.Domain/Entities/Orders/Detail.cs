@@ -1,7 +1,7 @@
-﻿using Netstore.Domain.Entities.Base;
-using Netstore.Domain.Entities.Products;
+﻿using Netstore.Core.Domain.Entities.Base;
+using Netstore.Core.Domain.Entities.Products;
 
-namespace Netstore.Domain.Entities.Orders;
+namespace Netstore.Core.Domain.Entities.Orders;
 
 public class Detail : Entity
 {

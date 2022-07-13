@@ -19,7 +19,7 @@ try
     builder.Services.Configure(builder.Configuration);
 
     WebApplication app = builder.Build();
-    app.UseInfrastructure(builder.Configuration);
+    app.Configure(builder.Configuration);
 
     app.Run();
 }
@@ -33,13 +33,11 @@ finally
     Log.CloseAndFlush();
 }
 
-#pragma warning disable S3903 // Types should be defined in named namespaces
 #pragma warning disable CA1050 // Declare types in namespaces
 #pragma warning disable S1118 // Utility classes should not have public constructors
 [ExcludeFromCodeCoverage]
 public partial class Program
 #pragma warning restore S1118 // Utility classes should not have public constructors
 #pragma warning restore CA1050 // Declare types in namespaces
-#pragma warning restore S3903 // Types should be defined in named namespaces
 {
 }

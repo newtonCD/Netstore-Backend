@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace Netstore.Application.Exceptions;
+namespace Netstore.Core.Application.Exceptions;
 
 [ExcludeFromCodeCoverage]
 [Serializable]
@@ -17,13 +17,13 @@ public class ForbiddenAccessException : Exception
     {
     }
 
-    public ForbiddenAccessException(string message, Exception innerException)
-        : base(message, innerException)
+    public ForbiddenAccessException(string message, Exception inner)
+        : base(message, inner)
     {
     }
 
-    protected ForbiddenAccessException(SerializationInfo serializationInfo, StreamingContext streamingContext)
-        : base(serializationInfo, streamingContext)
+    protected ForbiddenAccessException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
     {
     }
 }

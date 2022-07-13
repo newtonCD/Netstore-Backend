@@ -1,6 +1,6 @@
-﻿using Netstore.Domain.Entities.Base;
+﻿using Netstore.Core.Domain.Entities.Base;
 
-namespace Netstore.Domain.Entities.Orders;
+namespace Netstore.Core.Domain.Entities.Orders;
 
 public class Status : Entity
 {

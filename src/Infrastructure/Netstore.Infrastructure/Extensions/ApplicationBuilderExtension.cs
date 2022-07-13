@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Netstore.Application.Settings;
+using Netstore.Core.Application.Settings;
 using Serilog;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Netstore.Infrastructure.Extensions;
 [ExcludeFromCodeCoverage]
 public static class ApplicationBuilderExtension
 {
-    public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app, IConfiguration config)
+    public static IApplicationBuilder Configure(this IApplicationBuilder app, IConfiguration config)
     {
         const string CorsPoliceName = "CorsPolicy";
 
@@ -24,7 +24,6 @@ public static class ApplicationBuilderExtension
             app.UseIpRateLimiting();
 
         app.UseExceptionHandler("/error");
-        app.UseHttpsRedirection();
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
@@ -38,6 +37,8 @@ public static class ApplicationBuilderExtension
         app.UseSerilogRequestLogging();
         app.UseRouting();
         app.UseCors(CorsPoliceName);
+        app.UseHttpsRedirection();
+        app.UseAuthentication();
         app.UseAuthorization();
         app.UseHealthChecks("/health");
         app.UseEndpoints(endpoints =>

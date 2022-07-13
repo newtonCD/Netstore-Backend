@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Netstore.Application.Settings;
+using Netstore.Core.Application.Settings;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Netstore.Infrastructure.Extensions;

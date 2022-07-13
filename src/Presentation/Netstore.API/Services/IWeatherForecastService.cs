@@ -1,5 +1,5 @@
-﻿using Netstore.Application.Interfaces;
-using Netstore.Application.Interfaces.Services;
+﻿using Netstore.Core.Application.Interfaces;
+using Netstore.Core.Application.Interfaces.Services;
 using Netstore.API.Model;
 
 namespace Netstore.API.Services;

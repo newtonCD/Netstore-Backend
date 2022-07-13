@@ -1,6 +1,8 @@
 {
   "JwtSettings": {
-    "Key": "S0M3RAN0MS3CR3T!1!MAG1C!1!",
+    "ValidIssuer": "http://localhost:7299",
+    "ValidAudience": "http://localhost:7299",
+    "SecretKey": "S0M3RAN0MS3CR3T!1!MAG1C!1!",
     "TokenExpirationInMinutes": 60,
     "RefreshTokenExpirationInDays": 7
   }

@@ -1,7 +1,7 @@
-﻿using Netstore.Domain.Entities.Base;
+﻿using Netstore.Core.Domain.Entities.Base;
 using System;
 
-namespace Netstore.Domain.Entities.Orders;
+namespace Netstore.Core.Domain.Entities.Orders;
 
 public class Coupon : Entity
 {
