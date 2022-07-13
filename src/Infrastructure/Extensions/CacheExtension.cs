@@ -20,19 +20,19 @@ public static class CacheExtension
         if (!cacheSettings.Enabled)
             return services;
 
-        if (cacheSettings.PreferRedis)
+        if (cacheSettings.PreferRedis && !string.IsNullOrWhiteSpace(cacheSettings.RedisConnectionString))
         {
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = cacheSettings.RedisURL;
-                options.ConfigurationOptions = new StackExchange.Redis.ConfigurationOptions()
+                options.Configuration = cacheSettings.RedisConnectionString;
+                options.ConfigurationOptions = new ConfigurationOptions()
                 {
                     AbortOnConnectFail = true,
                     ConnectRetry = 5,
                     ReconnectRetryPolicy = new ExponentialRetry(
                                                     Convert.ToInt32(TimeSpan.FromSeconds(5).TotalMilliseconds),
                                                     Convert.ToInt32(TimeSpan.FromSeconds(10).TotalMilliseconds)),
-                    ConnectTimeout = 1000
+                    ConnectTimeout = 1000,
                 };
             });
         }

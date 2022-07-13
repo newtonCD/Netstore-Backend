@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Netstore.API.Extensions;
-using Netstore.Application.Extensions;
 using Netstore.Infrastructure.Extensions;
 using Serilog;
 using System;
@@ -16,8 +16,7 @@ try
 {
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
     builder.Host.Configure();
-    builder.Services.Configure();
-    builder.Services.AddInfrastructure(builder.Configuration);
+    builder.Services.Configure(builder.Configuration);
 
     WebApplication app = builder.Build();
     app.UseInfrastructure(builder.Configuration);
