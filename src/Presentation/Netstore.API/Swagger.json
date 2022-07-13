@@ -1,0 +1,27 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Netstore API",
+    "description": "API da loja virtual Netstore",
+    "contact": {
+      "name": "Newton Dantas",
+      "email": "newton.dantas@gmail.com"
+    },
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/v1/weatherforecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}
