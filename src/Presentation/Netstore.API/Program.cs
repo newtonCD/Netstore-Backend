@@ -8,7 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .CreateBootstrapLogger();
+    .CreateLogger();
 
 Log.Information("Starting up");
 
