@@ -20,10 +20,12 @@ public static class ApplicationBuilderExtension
     {
         const string CorsPoliceName = "CorsPolicy";
 
+        app.UseExceptionHandler("/error");
+        app.UseHttpsRedirection();
+
         if (config.GetSection(nameof(IpRateLimitSettings)).Get<IpRateLimitSettings>().EnableEndpointRateLimiting)
             app.UseIpRateLimiting();
 
-        app.UseExceptionHandler("/error");
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
@@ -34,10 +36,10 @@ public static class ApplicationBuilderExtension
             }
         });
 
+        app.UseHttpLogging();
         app.UseSerilogRequestLogging();
         app.UseRouting();
         app.UseCors(CorsPoliceName);
-        app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
         app.UseHealthChecks("/health");
