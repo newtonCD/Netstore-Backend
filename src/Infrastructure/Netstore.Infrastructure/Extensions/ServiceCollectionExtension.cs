@@ -4,6 +4,7 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
@@ -44,6 +45,12 @@ public static class ServiceCollectionExtension
 
     private static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
     {
+        services.AddHttpLogging(options =>
+        {
+            options.LoggingFields = HttpLoggingFields.RequestPropertiesAndHeaders |
+                                    HttpLoggingFields.RequestBody;
+        });
+
         services.AddCacheService();
         services.AddIpRatingLimit(config);
         services.AddControllers().AddFluentValidation();

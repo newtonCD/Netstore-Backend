@@ -36,11 +36,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".template.config", ".template.config", "{9B7F7014-1C14-46CE-BAFE-DD919AD6D9E4}"
-	ProjectSection(SolutionItems) = preProject
-		.template.config\template.json = .template.config\template.json
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployments", "deployments", "{910142F5-E608-49BE-8551-EA42DA7B6014}"
 	ProjectSection(SolutionItems) = preProject
 		deployments\docker-compose.mssql.yml = deployments\docker-compose.mssql.yml
@@ -141,7 +136,6 @@ Global
 		{40360ADB-8AD6-4C63-A364-0AE835DCCCC1} = {7E70D6F0-3051-4438-BF99-9E3EE3EA8669}
 		{8960B7E4-A4BF-4748-BF39-8A6ECAF81DDD} = {40360ADB-8AD6-4C63-A364-0AE835DCCCC1}
 		{D8331CAB-724C-4FDC-86DD-66FD7FA72635} = {40360ADB-8AD6-4C63-A364-0AE835DCCCC1}
-		{9B7F7014-1C14-46CE-BAFE-DD919AD6D9E4} = {7E70D6F0-3051-4438-BF99-9E3EE3EA8669}
 		{910142F5-E608-49BE-8551-EA42DA7B6014} = {7E70D6F0-3051-4438-BF99-9E3EE3EA8669}
 		{04BC993B-535D-44A5-9E9B-5DF3059C805A} = {7E70D6F0-3051-4438-BF99-9E3EE3EA8669}
 		{095E07A6-607B-4703-A19A-87E890A7DD3A} = {7E70D6F0-3051-4438-BF99-9E3EE3EA8669}

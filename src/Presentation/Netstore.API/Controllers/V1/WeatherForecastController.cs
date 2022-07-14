@@ -24,7 +24,6 @@ public class WeatherForecastController : ApiControllerBase
     }
 
     [HttpGet]
-    [Authorize]
     public IActionResult Get()
     {
         WeatherForecast weatherForecast;
