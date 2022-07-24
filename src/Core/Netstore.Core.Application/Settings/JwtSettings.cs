@@ -9,4 +9,5 @@ public class JwtSettings : IAppSettings
     public string SecretKey { get; set; }
     public int TokenExpirationInMinutes { get; set; }
     public int RefreshTokenExpirationInDays { get; set; }
+    public bool Enabled { get; set; }
 }

@@ -4,12 +4,17 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Netstore.Infrastructure.Extensions;
+namespace Netstore.Core.Application.DependencyInjection;
 
 [ExcludeFromCodeCoverage]
 public static class DynamicServiceRegistrationExtension
 {
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    /// <summary>
+    /// Adds the dynamic service registration.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <returns></returns>
+    public static IServiceCollection AddDynamicServiceRegistration(this IServiceCollection services)
     {
         Type transientServiceType = typeof(ITransientService);
         Type scopedServiceType = typeof(IScopedService);

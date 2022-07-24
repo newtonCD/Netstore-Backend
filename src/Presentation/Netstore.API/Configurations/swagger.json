@@ -1,6 +1,6 @@
 {
   "SwaggerSettings": {
-    "Enable": true,
+    "Enabled": true,
     "Title": "Netstore API",
     "Description": "API da loja virtual Netstore",
     "DeprecatedMessage": " Esta versão da API foi descontinuada.",

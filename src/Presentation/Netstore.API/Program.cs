@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Netstore.API.Extensions;
-using Netstore.Infrastructure.Extensions;
+using Netstore.Core.Application.DependencyInjection;
+using Netstore.Core.Application.Enums;
 using Serilog;
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -14,12 +14,14 @@ Log.Information("Starting up");
 
 try
 {
+    const CoreServices SetupCore = CoreServices.All;
+
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
     builder.Host.Configure();
-    builder.Services.Configure(builder.Configuration);
+    builder.Services.Configure(builder.Configuration, SetupCore);
 
     WebApplication app = builder.Build();
-    app.Configure(builder.Configuration);
+    app.Configure(builder.Configuration, SetupCore);
 
     app.Run();
 }

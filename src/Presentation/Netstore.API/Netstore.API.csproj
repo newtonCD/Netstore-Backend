@@ -28,6 +28,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Remove="Extensions\ConfigureHostBuilderExtensions.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <InternalsVisibleTo Include="$(AssemblyName).Tests" />
     </ItemGroup>
 
@@ -70,12 +74,16 @@
         <Content Update="Configurations\serilog.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Update="Configurations\security.json">
+        <Content Update="Configurations\jwt.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <Content Update="Configurations\swagger.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Extensions\" />
     </ItemGroup>
 
     <ProjectExtensions><VisualStudio><UserProperties configurations_4swagger_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

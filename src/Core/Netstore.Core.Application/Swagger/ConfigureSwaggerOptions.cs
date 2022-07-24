@@ -10,7 +10,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 
-namespace Netstore.Infrastructure.Swagger;
+namespace Netstore.Core.Application.Swagger;
 
 [ExcludeFromCodeCoverage]
 public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
@@ -18,12 +18,21 @@ public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
     private readonly IApiVersionDescriptionProvider _provider;
     private readonly IConfiguration _configuration;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ConfigureSwaggerOptions"/> class.
+    /// </summary>
+    /// <param name="provider">The provider.</param>
+    /// <param name="configuration">The configuration.</param>
     public ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider, IConfiguration configuration)
     {
         _provider = provider;
         _configuration = configuration;
     }
 
+    /// <summary>
+    /// Invoked to configure a SwaggerGenOptions instance.
+    /// </summary>
+    /// <param name="options">The options instance to configure.</param>
     public void Configure(SwaggerGenOptions options)
     {
         foreach (var description in _provider.ApiVersionDescriptions)
@@ -45,6 +54,11 @@ public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
         }
     }
 
+    /// <summary>
+    /// Creates the information for API version.
+    /// </summary>
+    /// <param name="description">The description.</param>
+    /// <returns></returns>
     private OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
     {
         SwaggerSettings swaggerSettings = _configuration.GetSection(nameof(SwaggerSettings)).Get<SwaggerSettings>();

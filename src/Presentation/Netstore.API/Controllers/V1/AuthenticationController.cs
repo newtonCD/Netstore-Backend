@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Netstore.Contracts.Authentication;
 using Netstore.Core.Application.Interfaces.Services;
+using Netstore.Core.Application.Interfaces.Services.Authentication;
 using Netstore.Core.Application.Models;
+using Netstore.Core.Application.Services.Authentication;
 using Netstore.Core.Application.Settings;
 using System;
 using System.Collections.Generic;
@@ -19,11 +23,35 @@ public class AuthenticationController : ApiControllerBase
 {
     private readonly IConfiguration _config;
     private readonly ILoginService _loginService;
+    private readonly IAuthenticationService _authenticationService;
 
-    public AuthenticationController(IConfiguration config, ILoginService loginService)
+    public AuthenticationController(IConfiguration config, ILoginService loginService, IAuthenticationService authenticationService)
     {
         _config = config;
         _loginService = loginService;
+        _authenticationService = authenticationService;
+    }
+
+    /// <summary>
+    /// Registro de usuário.
+    /// </summary>
+    [HttpPost("register")]
+    public async Task<IActionResult> RegisterAsync(RegisterRequest request)
+    {
+        AuthenticationResult authResult = await _authenticationService.RegisterAsync(
+            request.FirstName,
+            request.LastName,
+            request.Email,
+            request.Password);
+
+        var response = new AuthenticationResponse(
+            authResult.Id,
+            authResult.FirstName,
+            authResult.LastName,
+            authResult.Email,
+            authResult.Token);
+
+        return Ok(response);
     }
 
     /// <summary>
@@ -33,14 +61,14 @@ public class AuthenticationController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<IActionResult> LoginAsync([FromBody] Login login)
+    public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
-        if (login is null)
+        if (request is null)
         {
             return BadRequest("Invalid login request!!!");
         }
 
-        bool isValidLogin = await _loginService.IsValidUserNameAndPasswordAsync(login.UserName, login.Password);
+        bool isValidLogin = await _loginService.IsValidUserNameAndPasswordAsync(request.Email, request.Password);
 
         if (isValidLogin)
         {

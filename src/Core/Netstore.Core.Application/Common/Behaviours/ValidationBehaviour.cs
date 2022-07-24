@@ -14,11 +14,25 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValidationBehaviour{TRequest, TResponse}"/> class.
+    /// </summary>
+    /// <param name="validators">The validators.</param>
     public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators)
     {
         _validators = validators;
     }
 
+    /// <summary>
+    /// Pipeline handler. Perform any additional behavior and await the <paramref name="next" /> delegate as necessary
+    /// </summary>
+    /// <param name="request">Incoming request</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <param name="next">Awaitable delegate for the next action in the pipeline. Eventually this delegate represents the handler.</param>
+    /// <returns>
+    /// Awaitable task returning the <typeparamref name="TResponse" />
+    /// </returns>
+    /// <exception cref="Netstore.Core.Application.Exceptions.ValidationException">ValidationException</exception>
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
         if (_validators.Any())

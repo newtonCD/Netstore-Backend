@@ -8,7 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Netstore.Infrastructure.Services;
+namespace Netstore.Core.Application.Services;
 
 [ExcludeFromCodeCoverage]
 public class CacheService : ICacheService
@@ -17,6 +17,12 @@ public class CacheService : ICacheService
     private readonly IDistributedCache _cache;
     private readonly IConfiguration _configuration;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CacheService"/> class.
+    /// </summary>
+    /// <param name="cache">The cache.</param>
+    /// <param name="logger">The logger.</param>
+    /// <param name="configuration">The configuration.</param>
     public CacheService(
         IDistributedCache cache,
         ILogger<CacheService> logger,
@@ -27,6 +33,11 @@ public class CacheService : ICacheService
         _configuration = configuration;
     }
 
+    /// <summary>
+    /// Gets the specified key.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <returns></returns>
     public byte[] Get(string key)
     {
         try
@@ -39,6 +50,12 @@ public class CacheService : ICacheService
         }
     }
 
+    /// <summary>
+    /// Gets the asynchronous.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <param name="token">The token.</param>
+    /// <returns></returns>
     public async Task<byte[]> GetAsync(string key, CancellationToken token = default)
     {
         try
@@ -51,6 +68,10 @@ public class CacheService : ICacheService
         }
     }
 
+    /// <summary>
+    /// Refreshes the specified key.
+    /// </summary>
+    /// <param name="key">The key.</param>
     public void Refresh(string key)
     {
         try
@@ -63,6 +84,11 @@ public class CacheService : ICacheService
         }
     }
 
+    /// <summary>
+    /// Refreshes the asynchronous.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <param name="token">The token.</param>
     public async Task RefreshAsync(string key, CancellationToken token = default)
     {
         try
@@ -76,6 +102,10 @@ public class CacheService : ICacheService
         }
     }
 
+    /// <summary>
+    /// Removes the specified key.
+    /// </summary>
+    /// <param name="key">The key.</param>
     public void Remove(string key)
     {
         try
@@ -88,6 +118,11 @@ public class CacheService : ICacheService
         }
     }
 
+    /// <summary>
+    /// Removes the asynchronous.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <param name="token">The token.</param>
     public async Task RemoveAsync(string key, CancellationToken token = default)
     {
         try
@@ -100,6 +135,12 @@ public class CacheService : ICacheService
         }
     }
 
+    /// <summary>
+    /// Sets the specified key.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="options">The options.</param>
     public void Set(string key, byte[] value, DistributedCacheEntryOptions options)
     {
         try
@@ -116,6 +157,13 @@ public class CacheService : ICacheService
         }
     }
 
+    /// <summary>
+    /// Sets the asynchronous.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="options">The options.</param>
+    /// <param name="token">The token.</param>
     public async Task SetAsync(string key, byte[] value, DistributedCacheEntryOptions options, CancellationToken token = default)
     {
         try

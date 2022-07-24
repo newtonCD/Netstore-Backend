@@ -1,7 +1,7 @@
 ﻿using Netstore.Core.Application.Interfaces.Services;
 using System.Threading.Tasks;
 
-namespace Netstore.Infrastructure.Services;
+namespace Netstore.Core.Application.Services;
 
 public class LoginService : ILoginService
 {
