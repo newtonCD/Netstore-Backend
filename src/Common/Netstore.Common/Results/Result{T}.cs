@@ -1,18 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Threading.Tasks;
 
 namespace Netstore.Common.Results;
 
-/// <summary>
-/// Generic result wrapper. See <see cref="Result"/>, see <see cref="IResult{T}"/>
-/// </summary>
-/// <typeparam name="T">Parameter type</typeparam>
 public class Result<T> : Result, IResult<T>
 {
-    public Result()
-        : base()
+    public T Data { get; set; }
+
+    public static new Result<T> Fail()
     {
+        return new Result<T> { Succeeded = false };
     }
 
-    public T Data { get; set; }
+    public static new Result<T> Fail(string message)
+    {
+        return new Result<T> { Succeeded = false, Message = message };
+    }
+
+    public static new Task<Result<T>> FailAsync()
+    {
+        return Task.FromResult(Fail());
+    }
+
+    public static new Task<Result<T>> FailAsync(string message)
+    {
+        return Task.FromResult(Fail(message));
+    }
+
+    public static new Result<T> Success()
+    {
+        return new Result<T> { Succeeded = true };
+    }
+
+    public static new Result<T> Success(string message)
+    {
+        return new Result<T> { Succeeded = true, Message = message };
+    }
+
+    public static Result<T> Success(T data)
+    {
+        return new Result<T> { Succeeded = true, Data = data };
+    }
+
+    public static Result<T> Success(T data, string message)
+    {
+        return new Result<T> { Succeeded = true, Data = data, Message = message };
+    }
+
+    public static new Task<Result<T>> SuccessAsync()
+    {
+        return Task.FromResult(Success());
+    }
+
+    public static new Task<Result<T>> SuccessAsync(string message)
+    {
+        return Task.FromResult(Success(message));
+    }
+
+    public static Task<Result<T>> SuccessAsync(T data)
+    {
+        return Task.FromResult(Success(data));
+    }
+
+    public static Task<Result<T>> SuccessAsync(T data, string message)
+    {
+        return Task.FromResult(Success(data, message));
+    }
 }

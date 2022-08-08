@@ -1,14 +1,14 @@
 {
-  "CacheSettings": {
-    "Enabled": false,
-    "PreferRedis": false,
-    "RedisConnectionString": "localhost:6379",
-    "AbsoluteExpirationInSeconds": 300,
-    "SlidingExpirationInSeconds": 120,
-    "RedisConfigurationOptionsAbortOnConnectFail": true,
-    "RedisConfigurationConnectRetry": 5,
-    "RedisConfigurationConnectTimeout": 1000,
-    "RedisExponentialRetryDeltaBackOffMilliseconds": 5,
-    "RedisExponentialRetryMaxDeltaBackOffMilliseconds":  10
-  }
+    "CacheSettings": {
+        "Enabled": false,
+        "PreferRedis": false,
+        "RedisConnectionString": "localhost:6379",
+        "AbsoluteExpirationInSeconds": 300,
+        "SlidingExpirationInSeconds": 120,
+        "RedisConfigurationOptionsAbortOnConnectFail": true,
+        "RedisConfigurationConnectRetry": 5,
+        "RedisConfigurationConnectTimeout": 1000,
+        "RedisExponentialRetryDeltaBackOffMilliseconds": 5,
+        "RedisExponentialRetryMaxDeltaBackOffMilliseconds": 10
+    }
 }

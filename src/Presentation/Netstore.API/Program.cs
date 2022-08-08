@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Netstore.Core.Application.DependencyInjection;
+using Netstore.API.Extensions;
 using Netstore.Core.Application.Enums;
+using Netstore.Core.Application.Extensions;
+using Netstore.Infrastructure.Extensions;
 using Serilog;
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -18,10 +20,12 @@ try
 
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
     builder.Host.Configure();
-    builder.Services.Configure(builder.Configuration, SetupCore);
+    builder.Services.ConfigureApplicationLayer(builder.Configuration, SetupCore);
+    builder.Services.ConfigureInfrastructureLayer(builder.Configuration, SetupCore);
+    builder.Services.ConfigureApiLayer(builder.Configuration, SetupCore);
 
     WebApplication app = builder.Build();
-    app.Configure(builder.Configuration, SetupCore);
+    app.ConfigureWebApiApplication(builder.Configuration, SetupCore);
 
     app.Run();
 }

@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Netstore.Contracts.Authentication;
 using Netstore.Core.Application.Interfaces.Services;
-using Netstore.Core.Application.Interfaces.Services.Authentication;
 using Netstore.Core.Application.Models;
 using Netstore.Core.Application.Services.Authentication;
 using Netstore.Core.Application.Settings;
@@ -19,7 +18,7 @@ using System.Threading.Tasks;
 namespace Netstore.API.Controllers.V1;
 
 [ApiVersion("1.0")]
-public class AuthenticationController : ApiControllerBase
+public class AuthenticationController : ApiControllerBase<AuthenticationController>
 {
     private readonly IConfiguration _config;
     private readonly ILoginService _loginService;

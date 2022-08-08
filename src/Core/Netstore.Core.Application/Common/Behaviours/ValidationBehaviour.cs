@@ -44,7 +44,7 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
                     v.ValidateAsync(context, cancellationToken)));
 
             List<ValidationFailure> failures = validationResults
-                .Where(r => r.Errors.Any())
+                .Where(r => r.Errors.Count > 0)
                 .SelectMany(r => r.Errors)
                 .ToList();
 

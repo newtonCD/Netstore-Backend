@@ -4,7 +4,7 @@ namespace Netstore.Core.Application.Settings;
 
 public class DatabaseSettings : IAppSettings
 {
-    public string DBProvider { get; set; }
-    public string ConnectionString { get; set; }
-    public string SqliteConnection { get; set; }
+    public bool UseInMemoryDatabase { get; set; }
+    public string ApplicationConnection { get; set; }
+    public string IdentityConnection { get; set; }
 }

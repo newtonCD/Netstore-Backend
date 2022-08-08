@@ -16,13 +16,20 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Extensions\ApplicationBuilderExtensions.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <InternalsVisibleTo Include="$(AssemblyName).Tests" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Extensions\" />
-        <Folder Include="Persistence\" />
-        <Folder Include="Services\" />
+        <PackageReference Include="MailKit" Version="2.10.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7" />
+        <PackageReference Include="MimeKit" Version="2.10.1" />
     </ItemGroup>
 
     <ItemGroup>

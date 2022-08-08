@@ -16,6 +16,21 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Extensions\ResultExtensions.cs" />
+      <Compile Remove="Notifications\NotificationData.cs" />
+      <Compile Remove="Notifications\NotificationType.cs" />
+      <Compile Remove="Paging\PagedResult.cs" />
+      <Compile Remove="Paging\PagedResultBase.cs" />
+      <Compile Remove="Results\IResultError.cs" />
+      <Compile Remove="Results\IResultError_OLD.cs" />
+      <Compile Remove="Results\IResult_OLD.cs" />
+      <Compile Remove="Results\ResultError.cs" />
+      <Compile Remove="Results\ResultError_OLD.cs" />
+      <Compile Remove="Results\Result_OLD.cs" />
+      <Compile Remove="Results\Result{T}_OLD.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <InternalsVisibleTo Include="$(AssemblyName).Tests" />
     </ItemGroup>
 
@@ -24,8 +39,14 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
         <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.7" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Notifications\" />
     </ItemGroup>
 
 </Project>

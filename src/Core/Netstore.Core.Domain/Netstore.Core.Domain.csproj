@@ -16,7 +16,37 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Entities\Orders\Status.cs~RF120c79c.TMP" />
+      <Compile Remove="AuditableBaseEntity.cs" />
+      <Compile Remove="DomainEventBase.cs" />
+      <Compile Remove="Entities\Base\Entity.cs" />
+      <Compile Remove="Entities\Base\EntityBase.cs" />
+      <Compile Remove="Entities\Customers\Customer.cs" />
+      <Compile Remove="Entities\Misc\ConfigurationItem.cs" />
+      <Compile Remove="Entities\Orders\Cart.cs" />
+      <Compile Remove="Entities\Orders\Coupon.cs" />
+      <Compile Remove="Entities\Orders\Detail.cs" />
+      <Compile Remove="Entities\Orders\Order.cs" />
+      <Compile Remove="Entities\Orders\PaymentMethod.cs" />
+      <Compile Remove="Entities\Orders\Status.cs" />
+      <Compile Remove="Entities\Products\Author.cs" />
+      <Compile Remove="Entities\Products\Brand.cs" />
+      <Compile Remove="Entities\Products\Category.cs" />
+      <Compile Remove="Entities\Products\Color.cs" />
+      <Compile Remove="Entities\Products\Genre.cs" />
+      <Compile Remove="Entities\Products\Grid.cs" />
+      <Compile Remove="Entities\Products\Manufacturer.cs" />
+      <Compile Remove="Entities\Products\Picture.cs" />
+      <Compile Remove="Entities\Products\Product.cs" />
+      <Compile Remove="Entities\Products\ProductType.cs" />
+      <Compile Remove="Entities\Products\ProductVariation.cs" />
+      <Compile Remove="Entities\Products\Rating.cs" />
+      <Compile Remove="Entities\Products\Size.cs" />
+      <Compile Remove="Entities\Shipping\Price.cs" />
+      <Compile Remove="Entities\Shipping\PriceImportTemp.cs" />
+      <Compile Remove="Entities\Shipping\Service.cs" />
+      <Compile Remove="Entities\Shipping\WeightRange.cs" />
+      <Compile Remove="Entities\Shipping\ZipCodeRange.cs" />
+      <Compile Remove="IAuditableBaseEntity.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -24,9 +54,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
         <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Entities\Misc\" />
+      <Folder Include="Entities\Orders\" />
+      <Folder Include="Entities\Products\" />
+      <Folder Include="Entities\Shipping\" />
     </ItemGroup>
 
 </Project>

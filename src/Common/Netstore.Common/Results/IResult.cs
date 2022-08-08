@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace Netstore.Common.Results;
+﻿namespace Netstore.Common.Results;
 
 public interface IResult
 {
-    IReadOnlyCollection<IResultError> Errors { get; }
-    string Message { get; }
-    bool Succeeded { get; }
+    string Message { get; set; }
+    bool Succeeded { get; set; }
 }
 
 public interface IResult<out T> : IResult

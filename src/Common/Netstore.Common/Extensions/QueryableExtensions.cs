@@ -1,27 +1,23 @@
-﻿using Netstore.Common.Paging;
-using System;
+﻿using Ardalis.GuardClauses;
+using Microsoft.EntityFrameworkCore;
+using Netstore.Common.Paging;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Netstore.Common.Extensions;
 
 public static class QueryableExtensions
 {
-    public static PagedResult<T> GetPaged<T>(this IQueryable<T> query, int page, int pageSize)
+    public static async Task<PaginatedResult<T>> ToPaginatedListAsync<T>(this IQueryable<T> source, int pageNumber, int pageSize)
         where T : class
     {
-        var result = new PagedResult<T>
-        {
-            CurrentPage = page,
-            PageSize = pageSize,
-            RowCount = query.Count()
-        };
-
-        double pageCount = (double)result.RowCount / pageSize;
-        result.PageCount = (int)Math.Ceiling(pageCount);
-
-        int skip = (page - 1) * pageSize;
-        result.Results = query.Skip(skip).Take(pageSize).ToList();
-
-        return result;
+        Guard.Against.Null(source, nameof(source));
+        pageNumber = pageNumber == 0 ? 1 : pageNumber;
+        pageSize = pageSize == 0 ? 10 : pageSize;
+        long count = await source.LongCountAsync();
+        pageNumber = pageNumber <= 0 ? 1 : pageNumber;
+        List<T> items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+        return PaginatedResult<T>.Success(items, count, pageNumber, pageSize);
     }
 }

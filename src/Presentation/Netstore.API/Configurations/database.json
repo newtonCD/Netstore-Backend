@@ -1,7 +1,7 @@
 {
-  "DatabaseSettings": {
-    "DBProvider": "mssql",
-    "DefaultConnection": "Server=(localdb)\\v11.0;Database=TemplateApi;Trusted_Connection=True;MultipleActiveResultSets=true",
-    "SqliteConnection": "Data Source=database.sqlite"
-  }
+    "DatabaseSettings": {
+        "UseInMemoryDatabase": true,
+        "ApplicationConnection": "Server=(localdb)\\v11.0;Database=TemplateApi;Trusted_Connection=True;MultipleActiveResultSets=true",
+        "IdentityConnection": "Server=(localdb)\\v11.0;Database=TemplateApi;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
 }

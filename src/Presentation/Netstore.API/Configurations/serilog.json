@@ -1,48 +1,48 @@
 {
-  "Serilog": {
-    "Using": [ "Serilog", "Serilog.Exceptions", "Serilog.Sinks.Console", "Serilog.Sinks.MongoDB", "Serilog.Sinks.Seq", "Serilog.Formatting.Compact" ],
-    "MinimumLevel": {
-      "Default": "Information",
-      "Override": {
-        "Microsoft": "Warning",
-        "Microsoft.AspNetCore": "Warning",
-        "Microsoft.Hosting.Lifetime": "Warning"
-      }
-    },
-    "Properties": {
-      "Application": "Netstore.API",
-      "Environment": "Development"
-    },
-    "Enrich": [
-      "FromLogContext",
-      "WithCorrelationIdHeader",
-      "WithMachineName",
-      "WithExceptionDetails",
-      "WithThreadId",
-      "WithProcessId",
-      "WithMemoryUsage"
-    ],
-    "WriteTo": [
-      {
-        "Name": "Async",
-        "Args": {
-          "configure": [
-            {
-              "Name": "Console",
-              "Args": {
-                "theme": "Serilog.Sinks.SystemConsole.Themes.AnsiConsoleTheme::Code, Serilog.Sinks.Console",
-                "outputTemplate": "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff}] [{Level:u3}] {Message:j}{NewLine:1}{Properties:j}{NewLine:1}{Exception}"
-              }
-            },
-            {
-              "Name": "Seq",
-              "Args": {
-                "serverUrl": "http://localhost:5341"
-              }
+    "Serilog": {
+        "Using": [ "Serilog", "Serilog.Exceptions", "Serilog.Sinks.Console", "Serilog.Sinks.MongoDB", "Serilog.Sinks.Seq", "Serilog.Formatting.Compact" ],
+        "MinimumLevel": {
+            "Default": "Information",
+            "Override": {
+                "Microsoft": "Warning",
+                "Microsoft.AspNetCore": "Warning",
+                "Microsoft.Hosting.Lifetime": "Warning"
             }
-          ]
-        }
-      }
-    ]
-  }
+        },
+        "Properties": {
+            "Application": "Netstore.API",
+            "Environment": "Development"
+        },
+        "Enrich": [
+            "FromLogContext",
+            "WithCorrelationIdHeader",
+            "WithMachineName",
+            "WithExceptionDetails",
+            "WithThreadId",
+            "WithProcessId",
+            "WithMemoryUsage"
+        ],
+        "WriteTo": [
+            {
+                "Name": "Async",
+                "Args": {
+                    "configure": [
+                        {
+                            "Name": "Console",
+                            "Args": {
+                                "theme": "Serilog.Sinks.SystemConsole.Themes.AnsiConsoleTheme::Code, Serilog.Sinks.Console",
+                                "outputTemplate": "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff}] [{Level:u3}] {Message:j}{NewLine:1}{Properties:j}{NewLine:1}{Exception}"
+                            }
+                        },
+                        {
+                            "Name": "Seq",
+                            "Args": {
+                                "serverUrl": "http://localhost:5341"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }

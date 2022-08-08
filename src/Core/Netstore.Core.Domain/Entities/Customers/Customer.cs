@@ -3,7 +3,7 @@ using System;
 
 namespace Netstore.Core.Domain.Entities.Customers;
 
-public class Customer : Entity
+public class Customer : AuditableEntity
 {
     public int CustomerId { get; set; }
     public Guid CustomerCode { get; set; }
